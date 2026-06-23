@@ -21,6 +21,7 @@ Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/artikel',        [ArtikelController::class, 'index'])->name('artikel.index');
 Route::get('/artikel/{slug}', [ArtikelController::class, 'detail'])->name('artikel.detail');
 Route::get('/forum',          [ForumController::class, 'index'])->name('forum.index');
+Route::get('/forum/buat',     [ForumController::class, 'buat'])->name('forum.buat');
 Route::get('/forum/{id}',     [ForumController::class, 'detail'])->name('forum.detail');
 
 // ── BUTUH LOGIN ──
@@ -56,7 +57,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profil/password', [ProfilController::class, 'gantiPassword'])->name('profil.password');
 
     // Forum (butuh login)
-    Route::get('/forum/buat',           [ForumController::class, 'buat'])->name('forum.buat');
     Route::post('/forum/simpan',        [ForumController::class, 'simpan'])->name('forum.simpan');
     Route::post('/forum/{id}/komentar', [ForumController::class, 'komentar'])->name('forum.komentar');
     Route::delete('/forum/{id}/hapus',  [ForumController::class, 'hapus'])->name('forum.hapus');
